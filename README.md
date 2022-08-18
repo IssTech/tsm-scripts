@@ -6,3 +6,7 @@ For even more fun scripts we at IssTech recommend to look at [Thobias SQL Script
 
 ## :scroll: License
 Feel free to use our scripts and help us to get better, but for License questions are we following the [GNU 3.0](./LICENSE)
+
+## :superhero: Contribute
+Feel free to fork and add your scripts, when you are done, just make a Pull Requst.
+Thanks for your support
