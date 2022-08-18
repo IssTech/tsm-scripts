@@ -1,5 +1,4 @@
 /* Filename: only_containerpool.mac      */
-/* Run: 'macro only_containerpool.mac dbclass /tsm/path/devconfig.out /tsm/path/volhist.out */
 /*                                       */
 /* Owner: IssTech AB                     */
 /* Contributor:                          */
@@ -13,9 +12,9 @@ update script admin_sched '*******************************************' line=5
 
 /* Save Lines for future ideas */
 update script admin_sched '******** Backup DB/Config ********' line=10
-update script admin_sched 'Backup DB devclass=%1 wait=yes' line=11
-update script admin_sched 'Backup Devconfig filename=%2' line=12
-update script admin_sched 'Backup volhistory filename=%3' line=13
+update script admin_sched "Backup DB devclass=DBCLASS wait=yes" line=11
+update script admin_sched "Backup Devconfig filename=/TSM/PATH/DEVCONFIG.OUT" line=12
+update script admin_sched "Backup volhistory filename=/TSM/PATH/VOLHIST.OUT" line=13
 
 /* Save Lines for future ideas */
 update script admin_sched '******** Experation of data ********' line=20
