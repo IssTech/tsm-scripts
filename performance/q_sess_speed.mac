@@ -1,0 +1,19 @@
+/* Filename: q_sess_speed.mac           */
+/* Run: 'macro q_sess_speed.mac'        */
+/*                                      */
+/* Owner: IssTech AB                    */
+/* Contributor:                         */
+/* - Christian Petersson                */
+
+define script q_sess_speed '***********************************************' description='Query Backup/Restore speed per session' line=1
+update script q_sess_speed '** Query Backup/Restore Speed per session id **' line=2
+update script q_sess_speed '** Version 0.1                               **' line=3
+update script q_sess_speed '** Github Source: https://bit.ly/3K1pIQc     **' line=4
+update script q_sess_speed '** Syntax: run q_sess_speed                  **' line=5
+update script q_sess_speed '***********************************************' line=6
+
+/* Save Lines for future ideas */
+update script q_sess_speed 'select session_id,varchar(client_name,20) as "node", \' line=10
+update script q_sess_speed 'cast(bytes_sent/timestampdiff(2,current_timestamp-START_TIME)as integer)as "Sent b/s", \' line=11
+update script q_sess_speed 'cast(bytes_received/timestampdiff(2,current_timestamp-START_TIME)as integer) as "Received b/s" \' line=12
+update script q_sess_speed 'from sessions' line=13

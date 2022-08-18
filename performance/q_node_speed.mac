@@ -1,0 +1,19 @@
+/* Filename: q_node_speed.mac             */
+/* Run: 'macro q_node_speed.mac'          */
+/*                                      */
+/* Owner: IssTech AB                    */
+/* Contributor:                         */
+/* - Christian Petersson                */
+
+define script q_node_speed '*******************************************' description='Query Backup/Restore speed for a node' line=1
+update script q_node_speed '** Query Backup/Restore Speed for a node **' line=2
+update script q_node_speed '** Version 0.1                           **' line=3
+update script q_node_speed '** Github Source: https://bit.ly/3K1pIQc **' line=4
+update script q_node_speed '** Syntax: run q_node_speed NODENAME     **' line=5
+update script q_node_speed '*******************************************' line=6
+
+/* Save Lines for future ideas */
+
+update script q_node_speed 'select varchar(dayname(start_time),10) as "day",time(start_time) as "Start",varchar(entity,20) "entity", \' line=10
+update script q_node_speed 'varchar(activity,10) as "activity",bytes/timestampdiff(4,int(END_TIME-START_TIME))/1024/1024  as "mb/s" \' line=11
+update script q_node_speed 'from summary where activity in ('BACKUP','RESTORE') and entity like '%$1%' and timestampdiff(4,int(END_TIME-START_TIME))>0' line=12

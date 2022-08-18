@@ -1,0 +1,30 @@
+/* Filename: only_containerpool.mac      */
+/* Run: 'macro only_containerpool.mac dbclass /tsm/path/devconfig.out /tsm/path/volhist.out */
+/*                                       */
+/* Owner: IssTech AB                     */
+/* Contributor:                          */
+/* - Christian Petersson                 */
+
+define script admin_sched '*******************************************' description='Maintenance Script for daily Administrative Tasks' line=1
+update script admin_sched '** TSM Administrative Schedule Script    **' line=2
+update script admin_sched '** Version 0.1                           **' line=3
+update script admin_sched '** Github Source: https://bit.ly/3K1pIQc **' line=4
+update script admin_sched '*******************************************' line=5
+
+/* Save Lines for future ideas */
+update script admin_sched '******** Backup DB/Config ********' line=10
+update script admin_sched 'Backup DB devclass=%1 wait=yes' line=11
+update script admin_sched 'Backup Devconfig filename=%2' line=12
+update script admin_sched 'Backup volhistory filename=%3' line=13
+
+/* Save Lines for future ideas */
+update script admin_sched '******** Experation of data ********' line=20
+update script admin_sched 'Expire inventory wait=yes' line=21
+
+/* Save Lines for future ideas */
+update script admin_sched '******** Delete History data ********' line=30
+update script admin_sched 'delete volhistory type=all todate=today-5' line=31
+
+/* Save Lines for future ideas */
+update script admin_sched '******** Delete History data ********' line=40
+update script admin_sched 'audit licenses' line=41
