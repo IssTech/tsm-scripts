@@ -1,6 +1,6 @@
 #!/bin/bash
-# Filename: rebalance.cmd
-# Run: '.\rebalance.cmd'
+# Filename: rebalance.sh
+# Run: './rebalance.sh'
 
 # This script is made for Linux Platform only
 
@@ -10,9 +10,9 @@
 
 ### What is your Spectrum Protect Instance User
 USER="tsminst1"
-
 WHOAMI="$(whoami)"
 
+# Will check who you are login as, if it not match it will quit the script
 if [ "$WHOAMI" != "$USER" ]; 
  then 
   echo You need to run this script as "$USER"
@@ -40,17 +40,26 @@ rebalance_status () {
          sleep 60
         fi
      done
-# 	if %errorlevel% == 1 (goto FINISH) else (echo Process not finish...)	
 }
 
 rebalance_table () {
+    # This function will start a rebalance of one tablespace at the time
+    # and run the rebalance_status function, when that returns true
+    # it will start rebalance the next tablespace
+
+    echo Check status if any process already running.
+    rebalance_status $1
+
     echo Running Rebalance on DB2 Table $1
     db2 alter tablespace $1 rebalance
     rebalance_status $1
 }
 
+# Main Program
+# Connect to TSMDB1
 db2 connect to TSMDB1
 
+# Running a for loop of the list TABLE above 
 for t in $TABLE
  do
   rebalance_table $t
